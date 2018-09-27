@@ -46,13 +46,9 @@
         <StackPanel Grid.Column="1">
             <Rectangle Height="30" Fill="#FF2280D0" Margin="0,0,0,10"/>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
-                    <Button Content="Hello" Margin="50" Padding="10"/>
-                    <Button Content="Hello" Margin="50" Padding="10"/>
+                <StackPanel>
+                    <DataGrid Name="dg1" AutoGenerateColumns="True" Margin="50" Height="186"/>
+                    <Button Name="txtPokazDane" Click="txtPokazDane_Click" Content="Pokaż Dane" Margin="250,10,250,10" Padding="5"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="manage_app.PanelGlowny"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:manage_app"
+        mc:Ignorable="d"
+        Title="PanelGlowny" Height="500" Width="800">
+    <Grid>
+        <Grid Height="40" VerticalAlignment="Top" Background="#FF2280D0">
+            
+        </Grid>
+        <Grid Width="150" HorizontalAlignment="Left" Background="#FF3B478F">
+            <StackPanel>
+                <Rectangle Height="100" Fill="White" Stroke="#FF3B478F"/>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="d:\C#Projects\manage_app\manage_app\images\exit.png" Height="41" Width="32"/>
+                    <Button Content="Drugi" Width="118"/>
+                </StackPanel>
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</Window>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:manage_app"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Logowanie" Height="400" Width="350" WindowStyle="None">
     <Grid>
@@ -29,11 +30,15 @@
             </Grid.RowDefinitions>
             <TextBlock Margin="45,-8,45,30" FontFamily="Arial" FontSize="16" Opacity="0.5" Width="152" TextAlignment="Center">Manage Application</TextBlock>
             <StackPanel VerticalAlignment="Center" Height="244" Margin="0,1,0,2" Grid.RowSpan="2">
-                <TextBox Name="txtLogin" Margin="30,70,30,7" BorderBrush="White" Height="20" FontSize="15" FontFamily="Arial" Foreground="#FF878787"/>
-                <Rectangle Fill="#FF2D49A5" Height="1" Margin="30,0,30,0"/>
-                <PasswordBox Name="txtHaslo"  Margin="30,20,30,7" BorderBrush="White" FontSize="15" FontFamily="Arial" VerticalAlignment="Center" Foreground="#FF878787"/>
-                <Rectangle Fill="#FF2D49A5" Height="1" Margin="30,0,30,0"/>
-                <Button Name="btnZaloguj" Click="btnZaloguj_Click" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,40,10,10" Content="ZALOGUJ" Background="#FF2280D0" Height="36" FontFamily="Arial">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AccountBox" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="30,70,0,7" Height="24" Width="28"/>
+                    <TextBox x:Name="txtLogin" Margin="10,70,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="35,5,0,7" Height="24" Width="21"/>
+                    <PasswordBox x:Name="txtHaslo"  Margin="10,10,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" VerticalAlignment="Bottom" Foreground="#FF878787" Width="134"/>
+                </StackPanel>
+                <Button Name="btnZaloguj" Click="btnZaloguj_Click" Width="134" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,30,10,10" Content="ZALOGUJ" Height="30" FontFamily="Arial">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="8" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>
@@ -42,11 +47,5 @@
             </StackPanel>
         </Grid>
         <Image Source="d:\C#Projects\manage_app\manage_app\images\icons8-home-50.png" VerticalAlignment="Top" Margin="150,54,150,0"/>
-        <Button Name="btnWyjdz" Click="btnWyjdz_Click" HorizontalAlignment="Left" Margin="309,5,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="0,-0.75" Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold">
-            <Image Source="images/exit.png" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        </Button>
-        <Button x:Name="btnMinimalizuj" Click="btnMinimalizuj_Click" Margin="290,5,0,0" Width="23" Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image Source="images/minimize.png" Height="20" Width="20"/>
-        </Button>
     </Grid>
 </Window>
