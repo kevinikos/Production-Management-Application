@@ -4,21 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:manage_app"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="PanelGlowny" Height="500" Width="800">
+        Title="PanelGlowny" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid Height="40" VerticalAlignment="Top" Background="#FF2280D0">
-            
+        <Grid>
+            <Grid.RowDefinitions>   
+                <RowDefinition Height="40"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Height="40" VerticalAlignment="Top" Background="#FF2280D0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Label Content="Opcje" Foreground="White"/>
+                    <materialDesign:PopupBox Foreground="White">
+                        <StackPanel>
+                            <Button x:Name="btnWyloguj" Click="btnWyloguj_Click" Content="Wyloguj"/>
+                            <Button x:Name="btnZamknij" Click="btnZamknij_Click" Content="Zamknij"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+            </Grid>
         </Grid>
-        <Grid Width="150" HorizontalAlignment="Left" Background="#FF3B478F">
+        <Grid Width="170" HorizontalAlignment="Left" Background="#FF3B478F" Grid.RowSpan="2">
             <StackPanel>
                 <Rectangle Height="100" Fill="White" Stroke="#FF3B478F"/>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="d:\C#Projects\manage_app\manage_app\images\exit.png" Height="41" Width="32"/>
-                    <Button Content="Drugi" Width="118"/>
-                </StackPanel>
+                <ListViewItem Foreground="#FF2280D0">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Autorenew" Height="32" Width="34"/>
+                        <Button Content="SYMULACJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Foreground="#FF2280D0">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Settings" Height="32" Width="34"/>
+                        <Button Content="MP" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Foreground="#FF2280D0">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BellRing" Height="32" Width="34"/>
+                        <Button Content="MM" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Foreground="#FF2280D0">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Clock" Height="32" Width="34"/>
+                        <Button Content="OD" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                    </StackPanel>
+                </ListViewItem>
             </StackPanel>
-            
         </Grid>
     </Grid>
 </Window>

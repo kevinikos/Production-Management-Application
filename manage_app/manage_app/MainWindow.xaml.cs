@@ -41,7 +41,7 @@ namespace manage_app
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 if (count == 1)
                 {
-                    Panel dashboard = new Panel();
+                    PanelGlowny dashboard = new PanelGlowny();
                     MessageBox.Show("Pomyślnie zalogowano");
                     dashboard.Show();
                     this.Close();

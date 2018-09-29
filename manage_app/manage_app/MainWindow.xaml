@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:manage_app"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Logowanie" Height="400" Width="350" WindowStyle="None">
+        Title="Logowanie" Height="400" Width="350" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle Margin="0,0,0,158">
             <Rectangle.Fill>
@@ -32,11 +32,11 @@
             <StackPanel VerticalAlignment="Center" Height="244" Margin="0,1,0,2" Grid.RowSpan="2">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="AccountBox" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="30,70,0,7" Height="24" Width="28"/>
-                    <TextBox x:Name="txtLogin" Margin="10,70,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="txtLogin" Margin="10,70,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Login"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="35,5,0,7" Height="24" Width="21"/>
-                    <PasswordBox x:Name="txtHaslo"  Margin="10,10,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" VerticalAlignment="Bottom" Foreground="#FF878787" Width="134"/>
+                    <PasswordBox x:Name="txtHaslo"  Margin="12,10,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" VerticalAlignment="Bottom" Foreground="#FF878787" Width="134" materialDesign:HintAssist.Hint="Hasło"/>
                 </StackPanel>
                 <Button Name="btnZaloguj" Click="btnZaloguj_Click" Width="134" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,30,10,10" Content="ZALOGUJ" Height="30" FontFamily="Arial">
                     <Button.Effect>

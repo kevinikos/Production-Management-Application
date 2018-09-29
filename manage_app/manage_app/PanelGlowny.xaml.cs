@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -22,6 +23,19 @@ namespace manage_app
         public PanelGlowny()
         {
             InitializeComponent();
+        }
+
+        private void btnWyloguj_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
+    
+        private void btnZamknij_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ///Application.Current.Shutdown();
         }
     }
 }
