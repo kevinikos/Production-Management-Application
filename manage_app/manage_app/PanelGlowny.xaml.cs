@@ -23,6 +23,7 @@ namespace manage_app
         public PanelGlowny()
         {
             InitializeComponent();
+            Main.NavigationService.Navigate(new PageSymulacja());
         }
 
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)
@@ -36,6 +37,26 @@ namespace manage_app
         {
             this.Close();
             ///Application.Current.Shutdown();
+        }
+
+        private void btnSymulacja_Click(object sender, RoutedEventArgs e)
+        {
+            Main.NavigationService.Navigate(new PageSymulacja());
+        }
+
+        private void btnProdukcja_Click(object sender, RoutedEventArgs e)
+        {
+            Main.NavigationService.Navigate(new PageProdukcja());
+        }
+
+        private void btnMontaz_Click(object sender, RoutedEventArgs e)
+        {
+            Main.NavigationService.Navigate(new PageMontaz());
+        }
+
+        private void btnCzas_Click(object sender, RoutedEventArgs e)
+        {
+            Main.NavigationService.Navigate(new PageCzas());
         }
     }
 }

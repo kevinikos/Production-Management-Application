@@ -61,6 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PageCzas.xaml.cs">
+      <DependentUpon>PageCzas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageMontaz.xaml.cs">
+      <DependentUpon>PageMontaz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageProdukcja.xaml.cs">
+      <DependentUpon>PageProdukcja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageSymulacja.xaml.cs">
+      <DependentUpon>PageSymulacja.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,7 +85,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Panel.xaml">
+    <Page Include="PageCzas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageMontaz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageProdukcja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageSymulacja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,9 +107,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Panel.xaml.cs">
-      <DependentUpon>Panel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PanelGlowny.xaml.cs">
       <DependentUpon>PanelGlowny.xaml</DependentUpon>
     </Compile>
@@ -116,13 +137,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\icons8-home-50.png" />
+    <Resource Include="Images\icons8-home-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\exit.png" />
+    <Resource Include="Images\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\minimize.png" />
+    <Resource Include="Images\minimize.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,13 +7,18 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="PanelGlowny" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
     <Grid>
         <Grid>
-            <Grid.RowDefinitions>   
+            <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
-                <RowDefinition />
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Height="40" VerticalAlignment="Top" Background="#FF2280D0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" Height="40" VerticalAlignment="Top" Background="#FF2280D0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Label Content="Opcje" Foreground="White"/>
                     <materialDesign:PopupBox Foreground="White">
@@ -24,32 +29,33 @@
                     </materialDesign:PopupBox>
                 </StackPanel>
             </Grid>
+            <Frame Grid.Row="1" Grid.Column="1" x:Name="Main" NavigationUIVisibility="Hidden"/>
         </Grid>
-        <Grid Width="170" HorizontalAlignment="Left" Background="#FF3B478F" Grid.RowSpan="2">
+        <Grid Width="170" HorizontalAlignment="Left" Background="#FF3B478F">
             <StackPanel>
                 <Rectangle Height="100" Fill="White" Stroke="#FF3B478F"/>
                 <ListViewItem Foreground="#FF2280D0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Autorenew" Height="32" Width="34"/>
-                        <Button Content="SYMULACJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        <Button Content="SYMULACJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnSymulacja_Click"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Foreground="#FF2280D0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Settings" Height="32" Width="34"/>
-                        <Button Content="MP" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        <Button Content="PRODUKCJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnProdukcja_Click"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Foreground="#FF2280D0">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="BellRing" Height="32" Width="34"/>
-                        <Button Content="MM" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        <materialDesign:PackIcon Kind="GoogleCardboard" Height="32" Width="34"/>
+                        <Button Content="MONTAŻ" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnMontaz_Click"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Foreground="#FF2280D0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Clock" Height="32" Width="34"/>
-                        <Button Content="OD" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        <Button Content="CZAS" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnCzas_Click"/>
                     </StackPanel>
                 </ListViewItem>
             </StackPanel>

@@ -1,7 +1,6 @@
 d:\C#Projects\manage_app\manage_app\bin\Debug\manage_app.exe.config
 d:\C#Projects\manage_app\manage_app\bin\Debug\manage_app.exe
 d:\C#Projects\manage_app\manage_app\bin\Debug\manage_app.pdb
-d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.csprojAssemblyReference.cache
 d:\C#Projects\manage_app\manage_app\obj\Debug\MainWindow.g.cs
 d:\C#Projects\manage_app\manage_app\obj\Debug\App.g.cs
 d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app_MarkupCompile.cache
@@ -13,8 +12,6 @@ d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.csproj.GenerateResource
 d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.csproj.CoreCompileInputs.cache
 d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.exe
 d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.pdb
-d:\C#Projects\manage_app\manage_app\obj\Debug\Panel.g.cs
-d:\C#Projects\manage_app\manage_app\obj\Debug\Panel.baml
 d:\C#Projects\manage_app\manage_app\bin\Debug\MaterialDesignColors.dll
 d:\C#Projects\manage_app\manage_app\bin\Debug\MaterialDesignThemes.Wpf.dll
 d:\C#Projects\manage_app\manage_app\bin\Debug\MaterialDesignThemes.Wpf.pdb
@@ -23,3 +20,11 @@ d:\C#Projects\manage_app\manage_app\obj\Debug\PanelGlowny.g.cs
 d:\C#Projects\manage_app\manage_app\obj\Debug\App.baml
 d:\C#Projects\manage_app\manage_app\obj\Debug\PanelGlowny.baml
 d:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.csproj.CopyComplete
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageCzas.g.cs
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageMontaz.g.cs
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageProdukcja.g.cs
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageSymulacja.g.cs
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageCzas.baml
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageMontaz.baml
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageProdukcja.baml
+d:\C#Projects\manage_app\manage_app\obj\Debug\PageSymulacja.baml

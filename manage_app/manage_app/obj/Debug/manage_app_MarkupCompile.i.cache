@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 d:\C#Projects\manage_app\manage_app\App.xaml
-31819833470
+6-1380457578
 
-111931813782
+141748733117
 15-1692563057
-MainWindow.xaml;Panel.xaml;PanelGlowny.xaml;
+MainWindow.xaml;PageCzas.xaml;PageMontaz.xaml;PageProdukcja.xaml;PageSymulacja.xaml;PanelGlowny.xaml;
 
-False
+True
 

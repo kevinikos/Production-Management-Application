@@ -46,6 +46,6 @@
                 <Button Width="150" HorizontalAlignment="Center" Margin="46,0,46,4" Content="ZALOGUJ" Background="#FF2280D0" Height="0" VerticalAlignment="Bottom"/>
             </StackPanel>
         </Grid>
-        <Image Source="d:\C#Projects\manage_app\manage_app\images\icons8-home-50.png" VerticalAlignment="Top" Margin="150,54,150,0"/>
+        <Image Source="d:\C#Projects\manage_app\manage_app\Images\icons8-home-50.png" VerticalAlignment="Top" Margin="150,54,150,0"/>
     </Grid>
 </Window>
