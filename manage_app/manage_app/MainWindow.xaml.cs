@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using manage_app.Properties;
 
 namespace manage_app
 {
@@ -41,6 +42,8 @@ namespace manage_app
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 if (count == 1)
                 {
+                    Settings.Default.LoginUzytkownika = txtLogin.Text;
+                    Settings.Default.Save();
                     PanelGlowny PG = new PanelGlowny();
                     MessageBox.Show("Pomyślnie zalogowano");
                     PG.Show();

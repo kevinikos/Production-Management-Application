@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using manage_app.Properties;
 
 namespace manage_app
 {
@@ -23,6 +24,7 @@ namespace manage_app
         public PanelGlowny()
         {
             InitializeComponent();
+            txtPokazLogin.Text = Settings.Default.LoginUzytkownika;
             Main.NavigationService.Navigate(new PageSymulacja());
         }
 
