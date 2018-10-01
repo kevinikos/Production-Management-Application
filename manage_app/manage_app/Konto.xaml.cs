@@ -38,17 +38,27 @@ namespace manage_app
             SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=logowanie; User ID=sa; Password=whatever2424");
             try
             {
-                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT COUNT(*) FROM Uzytkownik WHERE Login='" + txtLogin.Text + "' AND Haslo='" + txtStareHaslo.Text + "'", sqlCon);
+                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT COUNT(*) FROM Uzytkownik WHERE Login='" + txtLogin.Text + "' AND Haslo='" + txtStareHaslo.Password + "'", sqlCon);
                 DataTable dt = new DataTable();
                 sqlDA.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "1")
                 {
-                    if (txtNoweHaslo.Text == txtPowtorzHaslo.Text)
+                    if (txtNoweHaslo.Password == txtPowtorzHaslo.Password)
                     {
-                        SqlDataAdapter sqlPASS = new SqlDataAdapter("UPDATE Uzytkownik set Haslo='" + txtNoweHaslo.Text + "'WHERE Login='" + txtLogin.Text + "'AND Haslo='" + txtStareHaslo.Text + "'", sqlCon);
-                        DataTable dtpass = new DataTable();
-                        sqlPASS.Fill(dtpass);
-                        MessageBox.Show("Hasło zmienione pomyślnie");
+                        if (txtNoweHaslo.Password.Length >= 5)
+                        {
+                            SqlDataAdapter sqlPASS = new SqlDataAdapter("UPDATE Uzytkownik set Haslo='" + txtNoweHaslo.Password + "'WHERE Login='" + txtLogin.Text + "'AND Haslo='" + txtStareHaslo.Password + "'", sqlCon);
+                            DataTable dtpass = new DataTable();
+                            sqlPASS.Fill(dtpass);
+                            PanelGlowny PG = new PanelGlowny();
+                            MessageBox.Show("Hasło zostało zmienione pomyślnie");
+                            PG.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hasło musi zawierać conajmniej 5 znaków");
+                        }
                     }
                     else
                     {
@@ -57,7 +67,7 @@ namespace manage_app
                 }
                 else
                 {
-                    MessageBox.Show("Login lub Hasło jest nieprawidłowe");
+                    MessageBox.Show("Login lub Hasło są nieprawidłowe");
                 }
             }
 

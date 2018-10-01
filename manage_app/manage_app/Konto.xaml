@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:manage_app"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Konto" Height="400" Width="400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Konto" Height="450" Width="400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle>
             <Rectangle.Fill>
@@ -17,22 +17,22 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Height="330" VerticalAlignment="Bottom" Margin="50,0,50,35" RadiusY="10" RadiusX="10" Fill="White">
+        <Rectangle Height="391" VerticalAlignment="Bottom" Margin="50,0,50,32" RadiusY="10" RadiusX="10" Fill="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid Margin="60,45,60,52">
+        <Grid Margin="60,44,60,43">
             <StackPanel Orientation="Vertical">
-                <StackPanel Margin="10,10,10,25" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Stretch" Opacity="0.8" Height="24" Width="28" Foreground="#FF673AB7"/>
-                    <TextBlock FontFamily="Arial" FontSize="20" TextAlignment="Center" Opacity="0.8" Height="25" Width="136" FontWeight="Bold" Foreground="#FF673AB7" Background="{x:Null}">Zmiana hasła</TextBlock>
+                <StackPanel Margin="10,10,10,35" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="KeyVariant" VerticalAlignment="Stretch" Opacity="0.8" Height="24" Width="28" Foreground="#FF673AB7"/>
+                    <TextBlock FontFamily="Arial" FontSize="23" TextAlignment="Center" Opacity="0.8" Height="25" Width="160" FontWeight="Bold" Foreground="#FF673AB7" Background="{x:Null}">Zmiana hasła</TextBlock>
                 </StackPanel>
-                <TextBox x:Name="txtLogin" Margin="0,0,0,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Login"/>
-                <TextBox x:Name="txtStareHaslo" Margin="0,0,0,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Stare hasło"/>
-                <TextBox x:Name="txtNoweHaslo" Margin="0,0,0,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Nowe hasło"/>
-                <TextBox x:Name="txtPowtorzHaslo" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Powtórz hasło"/>
-                <Button x:Name="btnZmienHaslo" Click="btnZmienHaslo_Click" Margin="10,20,10,10" Width="135" Content="ZMIEŃ" Height="30" FontFamily="Arial">
+                <TextBox x:Name="txtLogin" Margin="0,0,0,10" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <PasswordBox x:Name="txtStareHaslo" Margin="0,0,0,10" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Stare hasło" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <PasswordBox x:Name="txtNoweHaslo" Margin="0,0,0,10" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Nowe hasło" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <PasswordBox x:Name="txtPowtorzHaslo" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Powtórz hasło" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                <Button x:Name="btnZmienHaslo" Click="btnZmienHaslo_Click" Margin="10,25,10,10" Width="135" Content="ZMIEŃ" Height="30" FontFamily="Arial">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="8" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>

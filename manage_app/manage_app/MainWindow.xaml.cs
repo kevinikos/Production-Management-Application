@@ -41,14 +41,14 @@ namespace manage_app
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 if (count == 1)
                 {
-                    PanelGlowny dashboard = new PanelGlowny();
+                    PanelGlowny PG = new PanelGlowny();
                     MessageBox.Show("Pomyślnie zalogowano");
-                    dashboard.Show();
+                    PG.Show();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Login lub Hasło jest nieprawidłowe");
+                    MessageBox.Show("Login lub Hasło są nieprawidłowe");
                 }
 
 
@@ -63,7 +63,7 @@ namespace manage_app
             }
         }
 
-        private void btnWyjdz_Click(object sender, RoutedEventArgs e)
+        private void btnZamknij_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

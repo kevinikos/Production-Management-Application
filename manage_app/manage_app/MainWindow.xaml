@@ -17,34 +17,34 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Height="306" VerticalAlignment="Bottom" Margin="50,0,50,45" RadiusY="10" RadiusX="10" Fill="White">
+        <Button x:Name="btnZamknij" Click="btnZamknij_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Height="30" BorderBrush="{x:Null}" Width="50" Margin="0,5,0,0">
+            <materialDesign:PackIcon Kind="ExitToApp" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="1" Foreground="#FF673AB7" Height="24" Width="28"/>
+        </Button>
+        <Rectangle Height="314" VerticalAlignment="Bottom" Margin="50,0,50,37" RadiusY="10" RadiusX="10" Fill="White">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid Margin="50,112,50,53" Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75*"/>
-                <RowDefinition Height="173*"/>
-                <RowDefinition Height="0*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Margin="45,-8,45,30" FontFamily="Arial" FontSize="16" Opacity="0.5" Width="152" TextAlignment="Center">Manage Application</TextBlock>
-            <StackPanel VerticalAlignment="Center" Height="244" Margin="0,1,0,2" Grid.RowSpan="2">
+        <Grid Margin="50,60,50,47" Background="White">
+            <StackPanel Orientation="Vertical">
+                <materialDesign:PackIcon Kind="HomeOutline" Height="39" Width="50" Opacity="0.8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF673AB7"/>
+                <TextBlock FontFamily="Arial" FontSize="17" Opacity="0.8" TextAlignment="Center" Foreground="#FF673AB7" FontWeight="Bold" Height="29" Margin="45,0,45,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="182">Manage Application</TextBlock>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Height="244" Margin="0,45,0,0" Grid.RowSpan="2">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="AccountBox" HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="30,70,0,7" Height="24" Width="28"/>
+                    <materialDesign:PackIcon Kind="AccountBox" HorizontalAlignment="Center" VerticalAlignment="Stretch" Opacity="0.8" Foreground="#FF673AB7" Margin="30,70,0,7" Height="24" Width="28"/>
                     <TextBox x:Name="txtLogin" Margin="10,70,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Login"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Key" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="35,5,0,7" Height="24" Width="21"/>
+                    <materialDesign:PackIcon Kind="Key" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.8" Foreground="#FF673AB7" Margin="35,5,0,7" Height="24" Width="21"/>
                     <PasswordBox x:Name="txtHaslo"  Margin="12,10,30,7" BorderBrush="White" Height="30" FontSize="15" FontFamily="Arial" VerticalAlignment="Bottom" Foreground="#FF878787" Width="134" materialDesign:HintAssist.Hint="Hasło"/>
                 </StackPanel>
-                <Button Name="btnZaloguj" Click="btnZaloguj_Click" Width="134" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,30,10,10" Content="ZALOGUJ" Height="30" FontFamily="Arial">
+                <Button Name="btnZaloguj" Click="btnZaloguj_Click" Width="134" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10,40,10,10" Content="ZALOGUJ" Height="30" FontFamily="Arial">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="8" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>
                 </Button>
             </StackPanel>
         </Grid>
-        <Image Source="d:\C#Projects\manage_app\manage_app\Images\icons8-home-50.png" VerticalAlignment="Top" Margin="150,54,150,0"/>
     </Grid>
 </Window>
