@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-d:\C#Projects\manage_app\manage_app\obj\Debug\
+D:\C#Projects\manage_app\manage_app\obj\Debug\
 manage_app
 none
 false
 DEBUG;TRACE
-d:\C#Projects\manage_app\manage_app\App.xaml
-6-1380457578
+D:\C#Projects\manage_app\manage_app\App.xaml
+7-2050290352
 
-101399393498
-15-1692563057
-MainWindow.xaml;PageCzas.xaml;PageMontaz.xaml;PageProdukcja.xaml;PageSymulacja.xaml;PanelGlowny.xaml;
+11-182272428
+152004974127
+Konto.xaml;MainWindow.xaml;PageCzas.xaml;PageMontaz.xaml;PageProdukcja.xaml;PageSymulacja.xaml;PanelGlowny.xaml;
 
 False
 

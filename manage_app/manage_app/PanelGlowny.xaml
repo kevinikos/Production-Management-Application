@@ -23,6 +23,7 @@
                     <Label Content="Opcje" Foreground="White"/>
                     <materialDesign:PopupBox Foreground="White">
                         <StackPanel>
+                            <Button x:Name="btnKonto" Click="btnKonto_Click" Content="Konto"/>
                             <Button x:Name="btnWyloguj" Click="btnWyloguj_Click" Content="Wyloguj"/>
                             <Button x:Name="btnZamknij" Click="btnZamknij_Click" Content="Zamknij"/>
                         </StackPanel>

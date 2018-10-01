@@ -26,6 +26,13 @@ namespace manage_app
             Main.NavigationService.Navigate(new PageSymulacja());
         }
 
+        private void btnKonto_Click(object sender, RoutedEventArgs e)
+        {
+            Konto mw = new Konto();
+            mw.Show();
+            this.Close();
+        }
+
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
