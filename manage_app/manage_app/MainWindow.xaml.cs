@@ -42,7 +42,7 @@ namespace manage_app
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 if (count == 1)
                 {
-                    Settings.Default.LoginUzytkownika = txtLogin.Text;
+                    Settings.Default.LoginUzytkownika = txtLogin.Text; //zapisanie loginu uzytkownika w pamieci
                     Settings.Default.Save();
                     PanelGlowny PG = new PanelGlowny();
                     MessageBox.Show("Pomyślnie zalogowano");
@@ -71,9 +71,10 @@ namespace manage_app
             this.Close();
         }
 
-        private void btnMinimalizuj_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
+        //private void btnMinimalizuj_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.WindowState = WindowState.Minimized;
+        //}
+        
     }
 }

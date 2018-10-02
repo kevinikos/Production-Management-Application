@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using manage_app.Properties;
 
 namespace manage_app
@@ -24,7 +25,8 @@ namespace manage_app
         public PanelGlowny()
         {
             InitializeComponent();
-            txtPokazLogin.Text = Settings.Default.LoginUzytkownika;
+            ZegarStart();
+            txtPokazLogin.Text = Settings.Default.LoginUzytkownika; //pobranie loginu uzytkownika z zapisanej pamieci
             Main.NavigationService.Navigate(new PageSymulacja());
         }
 
@@ -66,6 +68,20 @@ namespace manage_app
         private void btnCzas_Click(object sender, RoutedEventArgs e)
         {
             Main.NavigationService.Navigate(new PageCzas());
+        }
+
+        private void ZegarStart()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(0.1);
+            timer.Tick += tickevent;
+            timer.Start();
+        }
+
+        private void tickevent(object sender, EventArgs e)
+        {
+            Zegar.Text = DateTime.Now.ToString(@"hh\:mm\:ss");
+           // throw new NotImplementedException();
         }
     }
 }
