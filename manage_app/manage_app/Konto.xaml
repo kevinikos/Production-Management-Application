@@ -7,8 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Konto" Height="450" Width="400" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Rectangle>
+    
+    <Grid Background="White">
+        <Rectangle Height="250" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF2281D1"/>
@@ -32,12 +33,12 @@
                 <PasswordBox x:Name="txtStareHaslo" Margin="0,0,0,10" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Stare hasło" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                 <PasswordBox x:Name="txtNoweHaslo" Margin="0,0,0,10" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Nowe hasło" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
                 <PasswordBox x:Name="txtPowtorzHaslo" BorderBrush="White" Height="40" FontSize="15" FontFamily="Arial" Foreground="#FF878787" Width="134" HorizontalAlignment="Center" materialDesign:HintAssist.Hint="Powtórz hasło" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
-                <Button x:Name="btnZmienHaslo" Click="btnZmienHaslo_Click" Margin="10,25,10,10" Width="135" Content="ZMIEŃ" Height="30" FontFamily="Arial">
+                <Button x:Name="btnZmienHaslo" Click="btnZmienHaslo_Click" Margin="10,25,10,10" Width="140" Content="ZMIEŃ" Height="30" FontFamily="Arial">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="8" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>
                 </Button>
-                <Button x:Name="btnWyjdz" Click="btnWyjdz_Click" Width="135" Content="WYJDŹ" Height="30" FontFamily="Arial">
+                <Button x:Name="btnWyjdz" Click="btnWyjdz_Click" Width="140" Content="WYJDŹ" Height="30" FontFamily="Arial">
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="8" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
                     </Button.Effect>

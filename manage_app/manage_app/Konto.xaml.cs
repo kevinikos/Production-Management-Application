@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using manage_app.Properties;
 
 namespace manage_app
 {
@@ -24,6 +25,7 @@ namespace manage_app
         public Konto()
         {
             InitializeComponent();
+            txtLogin.Text = Settings.Default.LoginUzytkownika;
         }
 
         private void btnWyjdz_Click(object sender, RoutedEventArgs e)

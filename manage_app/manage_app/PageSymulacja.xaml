@@ -4,11 +4,55 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:manage_app"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="PageSymulacja">
 
     <Grid Background="White">
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32">Symulacja</TextBlock>
+        <TabControl BorderBrush="White" TabStripPlacement="Bottom">
+            <TabItem Header="Dostępne symulacje" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="300"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="ID symulacji:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
+                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="3" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                <Label Content="Opis symulacji:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
+                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Przykładowy opis" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                <Label Content="Data utworzenia:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
+                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="03.10.2018" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                <Label Content="Użytkownik:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
+                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Kevin Nikolas" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button Width="170" Content="Dodaj symulację" Background="#FF2280D0" BorderBrush="#FF3B478F"/>
+                            <Button Margin="0,15,0,0" Width="170" Content="Usuń symulację" Background="#FF2280D0" BorderBrush="#FF3B478F"/>
+                            <Button Margin="0,15,0,0" x:Name="btnWszystkieSymulacje" Click="btnWszystkieSymulacje_Click" Width="170" Content="Wszystkie symulacje" Background="#FF2280D0" BorderBrush="#FF3B478F"/>
+                        </StackPanel>
+                    </Grid>
+                    <DataGrid x:Name="dg1" Grid.Row="1" Margin="10"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Wykonaj symulację" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
+                Coś tam
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Page>

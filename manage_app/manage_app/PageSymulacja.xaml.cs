@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,31 @@ namespace manage_app
         public PageSymulacja()
         {
             InitializeComponent();
+        }
+
+        private void btnWszystkieSymulacje_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
+            DataTable dt = new DataTable();
+            try
+            {
+                if (sqlCon.State == ConnectionState.Closed)
+                {
+                    sqlCon.Open();
+                    MessageBox.Show("Połączono z bazą dancyh");
+                }
+                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_sym, opis, data_w, user_w, status FROM t_SymulacjaG", sqlCon);
+                sqlDA.Fill(dt);
+                dg1.ItemsSource = dt.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
         }
     }
 }

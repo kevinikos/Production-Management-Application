@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:manage_app"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="PanelGlowny" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="PanelGlowny" Height="600" Width="900" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid>
@@ -60,7 +60,7 @@
                 <ListViewItem Foreground="#FF2280D0">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Clock" Height="32" Width="34"/>
-                        <Button Content="CZAS" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnCzas_Click"/>
+                        <Button Content="CZASY" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnCzas_Click"/>
                     </StackPanel>
                 </ListViewItem>
             </StackPanel>
