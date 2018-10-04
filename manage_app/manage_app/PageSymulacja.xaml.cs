@@ -26,6 +26,7 @@ namespace manage_app
         {
             InitializeComponent();
             OdswiezanieSymulacjiG();
+            Uzupelnij_ComboBox();
         }
 
         private void btnOdswiezSymulacjeG_Click(object sender, RoutedEventArgs e)
@@ -74,6 +75,72 @@ namespace manage_app
                 txtOpisSymulacjiG.Text = "";
                 txtUzytkownikG.Text = "";
                 txtDataUtworzeniaG.Text = "";
+                OdswiezanieSymulacjiG(); //odswiezenie grida 
+                Odswiez_ComboBox(); //odswiezenie comboboxa
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+        }
+
+        private void Uzupelnij_ComboBox()
+        {
+            Odswiez_ComboBox();
+        }
+
+        private void btnUsunSymulacjeG_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
+            DataTable dt = new DataTable();
+            try
+            {
+                if (sqlCon.State == ConnectionState.Closed)
+                {
+                    sqlCon.Open();
+                }
+                SqlDataAdapter sqlDA = new SqlDataAdapter("DELETE FROM t_SymulacjaG WHERE id_sym='" + ComboBoxIDSym.Text + "'", sqlCon);
+                sqlDA.Fill(dt);
+                MessageBox.Show("Pomyślnie usunięto symulację");
+                ComboBoxIDSym.Text = "";
+                OdswiezanieSymulacjiG();
+                Odswiez_ComboBox();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+        }
+
+        private void Odswiez_ComboBox()
+        {
+            ComboBoxIDSym.Items.Clear(); //czyszczenie comboboxa przed ponownym uzupelnieniem
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
+            DataTable dt = new DataTable();
+            try
+            {
+                if (sqlCon.State == ConnectionState.Closed)
+                {
+                    sqlCon.Open();
+                }
+                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_sym FROM t_SymulacjaG", sqlCon);
+                sqlDA.Fill(dt);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ComboBoxIDSym.Items.Add(dr["id_sym"].ToString());
+                }
+
             }
             catch (Exception ex)
             {
