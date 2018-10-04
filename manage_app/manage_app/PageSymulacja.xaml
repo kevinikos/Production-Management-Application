@@ -11,7 +11,7 @@
 
     <Grid Background="White">
         <TabControl BorderBrush="White" TabStripPlacement="Bottom">
-            <TabItem Header="Dostępne symulacje" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
+            <TabItem Header="Symulacja całościowa" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -23,33 +23,29 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="ID symulacji:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
-                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="3" HorizontalContentAlignment="Center"/>
-                            </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                                 <Label Content="Opis symulacji:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
-                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Przykładowy opis" HorizontalContentAlignment="Center"/>
+                                <TextBox x:Name="txtOpisSymulacjiG" Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Przykładowy opis" HorizontalContentAlignment="Center" Foreground="Gray"/>
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                                 <Label Content="Data utworzenia:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
-                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="03.10.2018" HorizontalContentAlignment="Center"/>
+                                <DatePicker x:Name="txtDataUtworzeniaG" Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="03.10.2018" HorizontalContentAlignment="Center" Foreground="Gray"/>
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                                 <Label Content="Użytkownik:" Width="150" HorizontalContentAlignment="Right" Opacity="0.9"/>
-                                <TextBox Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Kevin Nikolas" HorizontalContentAlignment="Center"/>
+                                <TextBox x:Name="txtUzytkownikG" Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Kevin Nikolas" HorizontalContentAlignment="Center" Foreground="Gray"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Width="170" Content="Dodaj symulację" Background="#FF2280D0" BorderBrush="#FF3B478F"/>
-                            <Button Margin="0,15,0,0" Width="170" Content="Usuń symulację" Background="#FF2280D0" BorderBrush="#FF3B478F"/>
-                            <Button Margin="0,15,0,0" x:Name="btnWszystkieSymulacje" Click="btnWszystkieSymulacje_Click" Width="170" Content="Wszystkie symulacje" Background="#FF2280D0" BorderBrush="#FF3B478F"/>
+                            <Button x:Name="btnDodajSymulacjeG" Click="btnDodajSymulacjeG_Click" Width="174" Content="Dodaj symulację" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button Margin="0,15,0,0" Width="170" Content="Usuń symulację" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnOdswiezSymulacjeG" Click="btnOdswiezSymulacjeG_Click" Margin="0,15,0,0" Width="170" Content="Odśwież symulacje" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                         </StackPanel>
                     </Grid>
-                    <DataGrid x:Name="dg1" Grid.Row="1" Margin="10"/>
+                    <DataGrid x:Name="dg1" Grid.Row="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Wykonaj symulację" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
+            <TabItem Header="Symulacja szczegółowa" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
                 Coś tam
             </TabItem>
         </TabControl>

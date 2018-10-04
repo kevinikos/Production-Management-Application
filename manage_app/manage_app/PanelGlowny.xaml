@@ -64,7 +64,7 @@
                     </StackPanel>
                 </ListViewItem>
             </StackPanel>
-            <TextBlock x:Name="Zegar" FontSize="15" Margin="3,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#FF2280D0" FontWeight="Bold" Text=""/>
+            <TextBlock x:Name="Zegar" FontSize="20" Margin="3,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#FF2280D0" FontWeight="Bold" Text=""/>
         </Grid>
     </Grid>
 </Window>
