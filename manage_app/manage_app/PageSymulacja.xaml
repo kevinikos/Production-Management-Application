@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:manage_app"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="730"
       Title="PageSymulacja">
 
     <Grid Background="White">
@@ -35,21 +35,58 @@
                                 <Label Content="Użytkownik:" Width="130" HorizontalContentAlignment="Right" Opacity="0.9"/>
                                 <TextBox x:Name="txtUzytkownikG" Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Kevin Nikolas" HorizontalContentAlignment="Center" Foreground="Gray"/>
                             </StackPanel>
-                            <Button Margin="0,20,0,0" HorizontalAlignment="Right" x:Name="btnDodajSymulacjeG" Click="btnDodajSymulacjeG_Click" Width="150" Content="Dodaj symulację" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button Margin="0,20,0,0" HorizontalAlignment="Right" x:Name="btnDodajSymulacjeG" Click="btnDodajSymulacjeG_Click" Width="150" Content="Dodaj symulację" BorderThickness="1.5" Background="#FF2280D0" BorderBrush="#FF673AB7" />
                         </StackPanel>
                         <StackPanel Margin="0,0,30,0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button HorizontalAlignment="Right" x:Name="btnOdswiezSymulacjeG" Click="btnOdswiezSymulacjeG_Click" Margin="0,15,0,0" Width="150" Content="Odśwież symulacje" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button HorizontalAlignment="Right" x:Name="btnOdswiezSymulacjeG" Click="btnOdswiezSymulacjeG_Click" Margin="0,15,0,0" Width="155" Content="Odśwież symulacje" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <StackPanel Orientation="Horizontal">
                                 <ComboBox x:Name="ComboBoxIDSym" Width="35" VerticalAlignment="Bottom" HorizontalContentAlignment="Center"/>
-                                <Button x:Name="btnUsunSymulacjeG" Click="btnUsunSymulacjeG_Click" Margin="5,15,0,0" Width="150" Content="Usuń symulację" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                                <Button x:Name="btnUsunSymulacjeG" Click="btnUsunSymulacjeG_Click" Margin="5,15,0,0" Width="155" Content="Usuń symulację" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>
-                    <DataGrid x:Name="dg1" Grid.Row="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <DataGrid x:Name="dg1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Symulacja szczegółowa" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
-                Coś tam
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="0,15,0,0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" Width="155">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="ID symulacji:" Width="100" Opacity="0.9"/>
+                                <ComboBox Width="35" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="ID łóżka:" Width="67" Opacity="0.9"/>
+                                <ComboBox x:Name="ComboBoxIDEnr" Width="70" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="Ilość łóżek:" Width="88" Opacity="0.9"/>
+                                <TextBox Width="49" HorizontalContentAlignment="Center"/>
+                            </StackPanel>
+                            <Button Margin="0,20,0,0" Content="Dodaj symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button Margin="0,20,0,0" Content="Usuń symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button Margin="0,20,0,0" Content="Znajdź symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnOdswiezSymulacje" Click="btnOdswiezSymulacje_Click" Margin="0,20,0,0" Content="Odśwież symulacje" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnZnajdzLozko" Click="btn_ZnajdzLozko_Click" Margin="0,90,0,0" Content="Znajdź łóżko" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnOdswiezLozka" Click="btnOdswiezLozka_Click" Margin="0,20,0,0" Content="Odśwież łóżka" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="300"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="#FF2280D0" Height="1.5" VerticalAlignment="Bottom" Opacity="0.5"/>
+                        <Rectangle Grid.RowSpan="2" Fill="#FF2280D0" Width="1.5" HorizontalAlignment="Left" Opacity="0.5"/>
+                        <DataGrid x:Name="dg2" Margin="5,0,-1,5" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="520"/>
+                        <DataGrid x:Name="dg3" Margin="5,0,-1,0" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="520"/>
+                    </Grid>
+                </Grid>
             </TabItem>
         </TabControl>
 
