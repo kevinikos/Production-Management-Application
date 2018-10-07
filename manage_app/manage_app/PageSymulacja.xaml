@@ -45,7 +45,7 @@
                             </StackPanel>
                         </StackPanel>
                     </Grid>
-                    <DataGrid x:Name="dg1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <DataGrid x:Name="dg1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Normal"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Symulacja szczegółowa" Opacity="1" FontSize="14" FontFamily="Arial" Foreground="#FF2280D0" FontWeight="Bold">
@@ -58,7 +58,7 @@
                         <StackPanel Margin="0,15,0,0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" Width="155">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="ID symulacji:" Width="100" Opacity="0.9"/>
-                                <ComboBox Width="35" HorizontalContentAlignment="Center"/>
+                                <ComboBox x:Name="ComboBoxIDSym2" Width="35" HorizontalContentAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="ID łóżka:" Width="67" Opacity="0.9"/>
@@ -66,13 +66,13 @@
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="Ilość łóżek:" Width="88" Opacity="0.9"/>
-                                <TextBox Width="49" HorizontalContentAlignment="Center"/>
+                                <TextBox x:Name="txtIloscLozek" Width="49" HorizontalContentAlignment="Center"/>
                             </StackPanel>
-                            <Button Margin="0,20,0,0" Content="Dodaj symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnDodajSymulacje" Click="btnDodajSymulacje_Click" Margin="0,20,0,0" Content="Dodaj symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button Margin="0,20,0,0" Content="Usuń symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
-                            <Button Margin="0,20,0,0" Content="Znajdź symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnZnajdzSymulacje" Click="btnZnajdzSymulacje_Click" Margin="0,20,0,0" Content="Znajdź symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnOdswiezSymulacje" Click="btnOdswiezSymulacje_Click" Margin="0,20,0,0" Content="Odśwież symulacje" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
-                            <Button x:Name="btnZnajdzLozko" Click="btn_ZnajdzLozko_Click" Margin="0,90,0,0" Content="Znajdź łóżko" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnZnajdzLozko" Click="btnZnajdzLozko_Click" Margin="0,90,0,0" Content="Znajdź łóżko" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnOdswiezLozka" Click="btnOdswiezLozka_Click" Margin="0,20,0,0" Content="Odśwież łóżka" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                         </StackPanel>
                     </Grid>
@@ -83,8 +83,8 @@
                         </Grid.RowDefinitions>
                         <Rectangle Fill="#FF2280D0" Height="1.5" VerticalAlignment="Bottom" Opacity="0.5"/>
                         <Rectangle Grid.RowSpan="2" Fill="#FF2280D0" Width="1.5" HorizontalAlignment="Left" Opacity="0.5"/>
-                        <DataGrid x:Name="dg2" Margin="5,0,-1,5" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="520"/>
-                        <DataGrid x:Name="dg3" Margin="5,0,-1,0" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="520"/>
+                        <DataGrid x:Name="dg2" Margin="5,0,-1,5" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="520" FontWeight="Normal"/>
+                        <DataGrid x:Name="dg3" Margin="5,0,-1,0" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="520" FontWeight="Normal"/>
                     </Grid>
                 </Grid>
             </TabItem>
