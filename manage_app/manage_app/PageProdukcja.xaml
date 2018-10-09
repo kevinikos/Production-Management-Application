@@ -21,7 +21,7 @@
             </StackPanel>
             <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
                 <Label Content="ID łóżka:" FontWeight="Bold" FontSize="14" FontFamily="Arial"/>
-                <ComboBox Width="35"/>
+                <ComboBox x:Name="ComboBoxIDEnrProdukcja" Width="70"/>
             </StackPanel>
             <Button x:Name="btnSymulacjaProdukcja" Click="btnSymulacjaProdukcja_Click" Margin="30,0,0,0" Content="Rozpocznij symulację" Width="170" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5" FontFamily="Arial"/>
         </StackPanel>

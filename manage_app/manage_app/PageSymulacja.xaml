@@ -68,8 +68,8 @@
                                 <Label Content="Ilość łóżek:" Width="88" Opacity="0.9"/>
                                 <TextBox x:Name="txtIloscLozek" Width="49" HorizontalContentAlignment="Center"/>
                             </StackPanel>
-                            <Button x:Name="btnDodajSymulacje" Click="btnDodajSymulacje_Click" Margin="0,20,0,0" Content="Dodaj symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
-                            <Button Margin="0,20,0,0" Content="Usuń symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnDodajSymulacje" Click="btnDodajSymulacje_Click" Margin="0,20,0,0" Content="Dodaj do symulacji" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button Margin="0,20,0,0" Content="Usuń z symulacji" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnZnajdzSymulacje" Click="btnZnajdzSymulacje_Click" Margin="0,20,0,0" Content="Znajdź symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnOdswiezSymulacje" Click="btnOdswiezSymulacje_Click" Margin="0,20,0,0" Content="Odśwież symulacje" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnZnajdzLozko" Click="btnZnajdzLozko_Click" Margin="0,90,0,0" Content="Znajdź łóżko" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>

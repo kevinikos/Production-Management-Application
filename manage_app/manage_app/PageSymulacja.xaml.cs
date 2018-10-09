@@ -339,6 +339,7 @@ namespace manage_app
                 sqlDA.Fill(dt);
                 MessageBox.Show("Pomyślnie dodano symulację");
                 txtIloscLozek.Text = "";
+                OdswiezanieSymulacji();
                 Odswiez_ComboBoxIDEnr();
                 //Odswiez_ComboBoxIDSym();
 
