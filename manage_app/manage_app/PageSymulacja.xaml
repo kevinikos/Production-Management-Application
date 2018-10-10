@@ -62,7 +62,7 @@
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="ID łóżka:" Width="67" Opacity="0.9"/>
-                                <ComboBox x:Name="ComboBoxIDEnr" Width="70" HorizontalContentAlignment="Center"/>
+                                <TextBox x:Name="txtIDEnr" Width="70" HorizontalContentAlignment="Center" TextChanged="txtIDEnr_TextChanged"/>
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="Ilość łóżek:" Width="88" Opacity="0.9"/>
@@ -72,8 +72,7 @@
                             <Button Margin="0,20,0,0" Content="Usuń z symulacji" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnZnajdzSymulacje" Click="btnZnajdzSymulacje_Click" Margin="0,20,0,0" Content="Znajdź symulację" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                             <Button x:Name="btnOdswiezSymulacje" Click="btnOdswiezSymulacje_Click" Margin="0,20,0,0" Content="Odśwież symulacje" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
-                            <Button x:Name="btnZnajdzLozko" Click="btnZnajdzLozko_Click" Margin="0,90,0,0" Content="Znajdź łóżko" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
-                            <Button x:Name="btnOdswiezLozka" Click="btnOdswiezLozka_Click" Margin="0,20,0,0" Content="Odśwież łóżka" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
+                            <Button x:Name="btnOdswiezLozka" Click="btnOdswiezLozka_Click" Margin="0,145,0,0" Content="Odśwież łóżka" Width="155" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="1">

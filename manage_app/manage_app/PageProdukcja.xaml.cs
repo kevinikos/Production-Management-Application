@@ -26,13 +26,12 @@ namespace manage_app
         {
             InitializeComponent();
             Odswiez_ComboBoxIDSymProdukcja();
-            //Odswiez_ComboBoxIDEnrProdukcja();
         }
+
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
 
         private void Odswiez_ComboBoxIDSymProdukcja()
         {
-            ComboBoxIDSymProdukcja.Items.Clear(); //czyszczenie comboboxa przed ponownym uzupelnieniem
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -59,10 +58,9 @@ namespace manage_app
             }
         }
 
-        private void Odswiez_ComboBoxIDEnrProdukcja()
+        private void ComboBoxIDSymProdukcja_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxIDEnrProdukcja.Items.Clear(); //czyszczenie comboboxa przed ponownym uzupelnieniem
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
+            ComboBoxIDEnrProdukcja.Items.Clear();
             DataTable dt = new DataTable();
             try
             {
@@ -72,7 +70,6 @@ namespace manage_app
                 }
                 SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_ez FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSymProdukcja.SelectedItem + "'", sqlCon);
                 sqlDA.Fill(dt);
-
                 foreach (DataRow dr in dt.Rows)
                 {
                     ComboBoxIDEnrProdukcja.Items.Add(dr["id_ez"].ToString());
@@ -91,7 +88,6 @@ namespace manage_app
 
         private void btnSymulacjaProdukcja_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -107,7 +103,9 @@ namespace manage_app
                         "HAVING (t_Symulacja.id_sym='" + ComboBoxIDSymProdukcja.Text + "') AND (t_Symulacja.id_ez='" + ComboBoxIDEnrProdukcja.Text + "') ORDER BY t_MaterialyMaster.grupa, t_BaugrupaMaster.ID_m", sqlCon);
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
+                    txtPokazIDEnr.Text = ComboBoxIDEnrProdukcja.Text;
                     ComboBoxIDEnrProdukcja.Text = "";
+
                 }
                 else if ((ComboBoxIDSymProdukcja.SelectedItem != null) && (ComboBoxIDEnrProdukcja.SelectedItem == null))
                 {
@@ -118,7 +116,7 @@ namespace manage_app
 
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
-                    Odswiez_ComboBoxIDEnrProdukcja();
+                    txtPokazIDEnr.Text = "Wszystkie";
                 }
             }
             catch (Exception ex)

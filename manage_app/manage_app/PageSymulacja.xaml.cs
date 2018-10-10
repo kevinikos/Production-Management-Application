@@ -32,8 +32,10 @@ namespace manage_app
             //symulacja szczegolowa
             OdswiezanieSymulacji();
             OdswiezanieLozka();
-            Odswiez_ComboBoxIDEnr();
         }
+
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
+        DataTable dt_idenr;
 
         private void btnOdswiezSymulacjeG_Click(object sender, RoutedEventArgs e)
         {
@@ -43,7 +45,6 @@ namespace manage_app
 
         private void OdswiezanieSymulacjiG()
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -67,7 +68,6 @@ namespace manage_app
 
         private void btnDodajSymulacjeG_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -99,8 +99,7 @@ namespace manage_app
         {
             ComboBoxIDSym.Items.Clear(); //czyszczenie comboboxa przed ponownym uzupelnieniem
             ComboBoxIDSym2.Items.Clear();
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
-            DataTable dt = new DataTable();
+           DataTable dt = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
@@ -129,7 +128,6 @@ namespace manage_app
 
         private void btnUsunSymulacjeG_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -164,18 +162,16 @@ namespace manage_app
 
         private void OdswiezanieLozka()
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
-            DataTable dt = new DataTable();
+            dt_idenr = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
                 {
                     sqlCon.Open();
                 }
-                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_enr as IDLozka, opis as OpisLozka FROM t_LozkaG", sqlCon);
-                sqlDA.Fill(dt);
-                dg3.ItemsSource = dt.DefaultView;
-                Odswiez_ComboBoxIDEnr();
+                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_enr as IDLozka, opis as Opis FROM t_LozkaG", sqlCon);
+                sqlDA.Fill(dt_idenr);
+                dg3.ItemsSource = dt_idenr.DefaultView;
 
             }
             catch (Exception ex)
@@ -188,57 +184,17 @@ namespace manage_app
             }
         }
 
-        private void Odswiez_ComboBoxIDEnr()
+        private void txtIDEnr_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ComboBoxIDEnr.Items.Clear(); //czyszczenie comboboxa przed ponownym uzupelnieniem
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
-            DataTable dt = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
                 {
                     sqlCon.Open();
                 }
-                SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_enr FROM t_LozkaG", sqlCon);
-                sqlDA.Fill(dt);
-
-                foreach (DataRow dr in dt.Rows)
-                {
-                    ComboBoxIDEnr.Items.Add(dr["id_enr"].ToString());
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlCon.Close();
-            }
-        }
-
-        private void btnZnajdzLozko_Click(object sender, RoutedEventArgs e)
-        {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
-            DataTable dt = new DataTable();
-            try
-            {
-                if (sqlCon.State == ConnectionState.Closed)
-                {
-                    sqlCon.Open();
-                }
-                if (ComboBoxIDEnr.SelectedItem != null)
-                {
-                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_enr as IDLozka, opis as OpisLozka FROM t_LozkaG WHERE id_enr='" + ComboBoxIDEnr.Text + "'", sqlCon);
-                    sqlDA.Fill(dt);
-                    dg3.ItemsSource = dt.DefaultView;
-                    Odswiez_ComboBoxIDEnr();
-                }
-                else
-                {
-                    MessageBox.Show("Uzupełnij brakujące pole");
-                }
+                DataView DV = new DataView(dt_idenr);
+                DV.RowFilter = string.Format("IDLozka LIKE '{0}%'", txtIDEnr.Text);
+                dg3.ItemsSource = DV;
 
             }
             catch (Exception ex)
@@ -259,7 +215,6 @@ namespace manage_app
 
         private void OdswiezanieSymulacji()
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -270,7 +225,6 @@ namespace manage_app
                 SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_sym as IDSym, id_ez as IDLozka, ilosc as Ilosc, status as Status FROM t_Symulacja", sqlCon);
                 sqlDA.Fill(dt);
                 dg2.ItemsSource = dt.DefaultView;
-                Odswiez_ComboBoxIDEnr();
                
             }
             catch (Exception ex)
@@ -285,7 +239,11 @@ namespace manage_app
 
         private void btnZnajdzSymulacje_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
+            ZnajdzSymulacje();
+        }
+
+        private void ZnajdzSymulacje()
+        {
             DataTable dt = new DataTable();
             try
             {
@@ -294,20 +252,18 @@ namespace manage_app
                     sqlCon.Open();
                 }
 
-                if ((ComboBoxIDSym2.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem != null))
+                if ((ComboBoxIDSym2.SelectedItem != null) && (txtIDEnr.Text != ""))
                 {
-                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_sym as IDSym, id_ez as IDLozka, ilosc as Ilosc, status as Status FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSym2.Text + "' AND id_ez='" + ComboBoxIDEnr.Text + "'", sqlCon);
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_sym as IDSym, id_ez as IDLozka, ilosc as Ilosc, status as Status FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSym2.Text + "' AND id_ez='" + txtIDEnr.Text + "'", sqlCon);
                     sqlDA.Fill(dt);
                     dg2.ItemsSource = dt.DefaultView;
-                    Odswiez_ComboBoxIDEnr();
+                    txtIDEnr.Text = "";
                 }
-                else if ((ComboBoxIDSym2.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem == null))
+                else if ((ComboBoxIDSym2.SelectedItem != null) && (txtIDEnr.Text == ""))
                 {
                     SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_sym as IDSym, id_ez as IDLozka, ilosc as Ilosc, status as Status FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSym2.Text + "'", sqlCon);
                     sqlDA.Fill(dt);
                     dg2.ItemsSource = dt.DefaultView;
-                    Odswiez_ComboBoxIDEnr();
-                    //Odswiez_ComboBoxIDSym();
                 }
                 else
                 {
@@ -324,10 +280,9 @@ namespace manage_app
                 sqlCon.Close();
             }
         }
-
+    
         private void btnDodajSymulacje_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             DataTable dt = new DataTable();
             try
             {
@@ -335,14 +290,11 @@ namespace manage_app
                 {
                     sqlCon.Open();
                 }
-                SqlDataAdapter sqlDA = new SqlDataAdapter("INSERT INTO t_Symulacja (id_sym, id_ez, ilosc, status) VALUES ('" + ComboBoxIDSym2.Text + "','" + ComboBoxIDEnr.Text + "','" + txtIloscLozek.Text + "','" + 0 + "')", sqlCon);
+                SqlDataAdapter sqlDA = new SqlDataAdapter("INSERT INTO t_Symulacja (id_sym, id_ez, ilosc, status) VALUES ('" + ComboBoxIDSym2.Text + "','" + txtIDEnr.Text + "','" + txtIloscLozek.Text + "','" + 0 + "')", sqlCon);
                 sqlDA.Fill(dt);
                 MessageBox.Show("Pomyślnie dodano symulację");
                 txtIloscLozek.Text = "";
-                OdswiezanieSymulacji();
-                Odswiez_ComboBoxIDEnr();
-                //Odswiez_ComboBoxIDSym();
-
+                ZnajdzSymulacje();
             }
             catch (Exception ex)
             {

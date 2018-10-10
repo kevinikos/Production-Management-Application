@@ -30,4 +30,3 @@ d:\C#Projects\manage_app\manage_app\obj\Debug\PageProdukcja.baml
 d:\C#Projects\manage_app\manage_app\obj\Debug\PageSymulacja.baml
 D:\C#Projects\manage_app\manage_app\obj\Debug\Konto.g.cs
 D:\C#Projects\manage_app\manage_app\obj\Debug\Konto.baml
-D:\C#Projects\manage_app\manage_app\obj\Debug\manage_app.csprojAssemblyReference.cache

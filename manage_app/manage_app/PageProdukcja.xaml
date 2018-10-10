@@ -17,13 +17,17 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <Label Content="ID symulacji:" FontWeight="Bold" FontSize="14" FontFamily="Arial"/>
-                <ComboBox x:Name="ComboBoxIDSymProdukcja" Width="35" Foreground="#FF2280D0" VerticalAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="14"/>
+                <ComboBox x:Name="ComboBoxIDSymProdukcja" Width="35" Foreground="#FF2280D0" VerticalAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="14" SelectionChanged="ComboBoxIDSymProdukcja_SelectionChanged"/>
             </StackPanel>
             <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
                 <Label Content="ID łóżka:" FontWeight="Bold" FontSize="14" FontFamily="Arial"/>
-                <ComboBox x:Name="ComboBoxIDEnrProdukcja" Width="70"/>
+                <ComboBox x:Name="ComboBoxIDEnrProdukcja" Width="70" Foreground="#FF2280D0" VerticalAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="14"/>
             </StackPanel>
             <Button x:Name="btnSymulacjaProdukcja" Click="btnSymulacjaProdukcja_Click" Margin="30,0,0,0" Content="Rozpocznij symulację" Width="170" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowRight" Height="20" Width="25" Opacity="0.6" FontWeight="Bold"/>
+            <TextBlock x:Name="txtPokazIDEnr" Text="Łóżko" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
         </StackPanel>
         <Grid Grid.Row="1">
             <DataGrid x:Name="dg4" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="top" Width="710" FontFamily="Arial"/>
