@@ -56,6 +56,7 @@ namespace manage_app
                 sqlDA.Fill(dt);
                 dg1.ItemsSource = dt.DefaultView;
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -172,6 +173,7 @@ namespace manage_app
                 SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_enr as IDLozka, opis as Opis FROM t_LozkaG", sqlCon);
                 sqlDA.Fill(dt_idenr);
                 dg3.ItemsSource = dt_idenr.DefaultView;
+                txtIDEnr.Text = "";
 
             }
             catch (Exception ex)
@@ -295,10 +297,11 @@ namespace manage_app
                 MessageBox.Show("Pomyślnie dodano symulację");
                 txtIloscLozek.Text = "";
                 ZnajdzSymulacje();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Wybrany model łóżka jest już dodany");
             }
             finally
             {
