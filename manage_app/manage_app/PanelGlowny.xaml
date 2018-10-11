@@ -39,32 +39,37 @@
         <Grid Width="170" HorizontalAlignment="Left" Background="#FF3B478F">
             <StackPanel>
                 <Rectangle Height="100" Fill="White" Stroke="#FF3B478F"/>
-                <ListViewItem Foreground="#FF2280D0">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Autorenew" Height="32" Width="34"/>
-                        <Button Content="SYMULACJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnSymulacja_Click"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Foreground="#FF2280D0">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Settings" Height="32" Width="34"/>
-                        <Button Content="PRODUKCJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnProdukcja_Click"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Foreground="#FF2280D0">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="GoogleCardboard" Height="32" Width="34"/>
-                        <Button Content="MONTAŻ" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnMontaz_Click"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Foreground="#FF2280D0">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Clock" Height="32" Width="34"/>
-                        <Button Content="CZASY" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="True" Click="btnCzas_Click"/>
-                    </StackPanel>
-                </ListViewItem>
+                <ListView x:Name="ListViewMenu" SelectionChanged="ListViewMenu_SelectionChanged">
+                    <ListViewItem Foreground="#FF2280D0" Height="50">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Autorenew" Height="32" Width="34"/>
+                            <Button Content="SYMULACJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Foreground="#FF2280D0" Height="50">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Settings" Height="32" Width="34"/>
+                            <Button Content="PRODUKCJA" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Foreground="#FF2280D0" Height="50">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="GoogleCardboard" Height="32" Width="34"/>
+                            <Button Content="MONTAŻ" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Foreground="#FF2280D0" Height="50">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Clock" Height="32" Width="34"/>
+                            <Button Content="CZASY" Width="115" Background="{x:Null}" BorderBrush="{x:Null}" Padding="5" Foreground="#FF2280D0" IsHitTestVisible="False"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
             </StackPanel>
             <TextBlock x:Name="Zegar" FontSize="20" Margin="3,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#FF2280D0" FontWeight="Bold" Text=""/>
+            <materialDesign:TransitioningContent x:Name="TransitioningContentPanel" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+                <Grid x:Name="Panel" Margin="0,100,0,0" Background="#FF2280D0" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Width="7"/>
+            </materialDesign:TransitioningContent>
         </Grid>
     </Grid>
 </Window>

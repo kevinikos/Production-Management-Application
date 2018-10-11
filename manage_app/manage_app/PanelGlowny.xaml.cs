@@ -50,26 +50,6 @@ namespace manage_app
             ///Application.Current.Shutdown();
         }
 
-        private void btnSymulacja_Click(object sender, RoutedEventArgs e)
-        {
-            Main.NavigationService.Navigate(new PageSymulacja());
-        }
-
-        private void btnProdukcja_Click(object sender, RoutedEventArgs e)
-        {
-            Main.NavigationService.Navigate(new PageProdukcja());
-        }
-
-        private void btnMontaz_Click(object sender, RoutedEventArgs e)
-        {
-            Main.NavigationService.Navigate(new PageMontaz());
-        }
-
-        private void btnCzas_Click(object sender, RoutedEventArgs e)
-        {
-            Main.NavigationService.Navigate(new PageCzas());
-        }
-
         private void ZegarStart()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -82,6 +62,36 @@ namespace manage_app
         {
             Zegar.Text = DateTime.Now.ToString(@"hh\:mm\:ss");
            // throw new NotImplementedException();
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListViewMenu.SelectedIndex;
+            MoveCursorMenu(index);
+
+            switch (index)
+            {
+                case 0:
+                    Main.NavigationService.Navigate(new PageSymulacja());
+                    break;
+                case 1:
+                    Main.NavigationService.Navigate(new PageProdukcja());
+                    break;
+                case 2:
+                    Main.NavigationService.Navigate(new PageMontaz());
+                    break;
+                case 3:
+                    Main.NavigationService.Navigate(new PageCzas());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void MoveCursorMenu(int index)
+        {
+            TransitioningContentPanel.OnApplyTemplate();
+            Panel.Margin = new Thickness(0, (100 + (50 * index)), 0, 0);
         }
     }
 }

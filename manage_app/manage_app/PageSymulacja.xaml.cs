@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BespokeFusion;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -41,6 +42,7 @@ namespace manage_app
         {
             OdswiezanieSymulacjiG();
             MessageBox.Show("Pomyślnie odświeżono symulacje");
+            
         }
 
         private void OdswiezanieSymulacjiG()
