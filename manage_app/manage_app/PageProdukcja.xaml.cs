@@ -89,6 +89,7 @@ namespace manage_app
         private void btnSymulacja_Click(object sender, RoutedEventArgs e)
         {
             DataTable dt = new DataTable();
+            DataTable dtTB = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
@@ -96,17 +97,22 @@ namespace manage_app
                     sqlCon.Open();
                 }
                 if ((ComboBoxIDSym.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem != null))
-                {
+                {              
                     SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT t_Symulacja.id_sym, t_MaterialyMaster.grupa, t_BaugrupaMaster.ID_m, t_MaterialyMaster.SAP, t_MaterialyMaster.nazwa, t_MaterialyMaster.jednostka, Sum([t_BaugrupaMaster].[ilosc]*[t_BaugrupaMaster].[dlugosc]*[t_Komponenty].[ilosc]*[t_Lozka].[ilosc]*[t_Symulacja].[ilosc]) AS Ilość, t_MaterialyMaster.dispo " +
                         "FROM t_MaterialyMaster INNER JOIN (((t_Lozka INNER JOIN t_Komponenty ON t_Lozka.id_kp = t_Komponenty.id_kp) INNER JOIN t_Symulacja ON t_Lozka.id_enr = t_Symulacja.id_ez) INNER JOIN t_BaugrupaMaster ON t_Komponenty.id_b = t_BaugrupaMaster.ID_b) ON t_MaterialyMaster.ID = t_BaugrupaMaster.ID_m " +
                         "GROUP BY t_Symulacja.id_sym, t_Symulacja.id_ez, t_MaterialyMaster.grupa, t_BaugrupaMaster.ID_m, t_MaterialyMaster.SAP, t_MaterialyMaster.nazwa, t_MaterialyMaster.jednostka, t_MaterialyMaster.dispo " +
                         "HAVING (t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "') AND (t_Symulacja.id_ez='" + ComboBoxIDEnr.Text + "') ORDER BY t_MaterialyMaster.grupa, t_BaugrupaMaster.ID_m", sqlCon);
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
+
+                    //informacja dodatkowa - jaka ilosc zostala przypisana do danego modelu w symulacji
+                    SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT ilosc FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym.Text + "') AND (id_ez='" + ComboBoxIDEnr.Text + "')", sqlCon);
+                    sqlDATB.Fill(dtTB);
+                    txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
                     txtPokazIDEnr.Text = ComboBoxIDEnr.Text;
                     ComboBoxIDEnr.Text = "";
-
                 }
+
                 else if ((ComboBoxIDSym.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem == null))
                 {
                     SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT t_Symulacja.id_sym, t_MaterialyMaster.grupa, t_BaugrupaMaster.ID_m, t_MaterialyMaster.SAP, t_MaterialyMaster.nazwa, t_MaterialyMaster.jednostka, Sum([t_BaugrupaMaster].[ilosc]*[t_BaugrupaMaster].[dlugosc]*[t_Komponenty].[ilosc]*[t_Lozka].[ilosc]*[t_Symulacja].[ilosc]) AS Ilość, t_MaterialyMaster.dispo " +
@@ -115,6 +121,10 @@ namespace manage_app
                         "HAVING (t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "') ORDER BY t_MaterialyMaster.grupa, t_BaugrupaMaster.ID_m", sqlCon);
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
+
+                    SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT SUM(ilosc) FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSym.Text + "'", sqlCon);
+                    sqlDATB.Fill(dtTB);
+                    txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
                     txtPokazIDEnr.Text = "Wszystkie";
                 }
                 else

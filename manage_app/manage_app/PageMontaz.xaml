@@ -25,11 +25,20 @@
             </StackPanel>
             <Button x:Name="btnSymulacja" Click="btnSymulacja_Click" Margin="30,0,0,0" Content="Rozpocznij symulację" Width="170" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5" FontFamily="Arial"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowRight" Height="20" Width="25" Opacity="0.6" FontWeight="Bold"/>
-            <TextBlock x:Name="txtPokazIDEnr" Text="Łóżko" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowRight" Height="20" Width="25" Opacity="0.6" FontWeight="Bold"/>
+                <TextBlock Text="Model:" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Margin="5,0,0,0" x:Name="txtPokazIDEnr" Text="" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowRight" Height="20" Width="25" Opacity="0.6" FontWeight="Bold"/>
+                <TextBlock Text="Ilość:" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="txtPokazIlosc" Margin="5,0,0,0" Text="" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            </StackPanel>
         </StackPanel>
         <Grid Grid.Row="1">
             <DataGrid x:Name="dg4" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="top" Width="710" FontFamily="Arial"/>
-        </Grid>    </Grid>
+        </Grid>
+    </Grid>
 </Page>

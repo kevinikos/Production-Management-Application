@@ -89,6 +89,7 @@ namespace manage_app
         private void btnSymulacja_Click(object sender, RoutedEventArgs e)
         {
             DataTable dt = new DataTable();
+            DataTable dtTB = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
@@ -103,6 +104,11 @@ namespace manage_app
                         "HAVING (t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "') AND (t_Symulacja.id_ez='" + ComboBoxIDEnr.Text + "') ORDER BY t_MaterialyMaster.grupa, t_Komponenty.id_b", sqlCon);
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
+
+                    //informacja dodatkowa - jaka ilosc zostala przypisana do danego modelu w symulacji
+                    SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT ilosc FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym.Text + "') AND (id_ez='" + ComboBoxIDEnr.Text + "')", sqlCon);
+                    sqlDATB.Fill(dtTB);
+                    txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
                     txtPokazIDEnr.Text = ComboBoxIDEnr.Text;
                     ComboBoxIDEnr.Text = "";
 
@@ -115,6 +121,10 @@ namespace manage_app
                         "HAVING (t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "') ORDER BY t_MaterialyMaster.grupa, t_Komponenty.id_b", sqlCon);
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
+
+                    SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT SUM(ilosc) FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSym.Text + "'", sqlCon);
+                    sqlDATB.Fill(dtTB);
+                    txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
                     txtPokazIDEnr.Text = "Wszystkie";
                 }
                 else
