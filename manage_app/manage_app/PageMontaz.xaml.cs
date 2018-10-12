@@ -45,7 +45,7 @@ namespace manage_app
                 foreach (DataRow dr in dt.Rows)
                 {
                     ComboBoxIDSym.Items.Add(dr["id_sym"].ToString());
-                }
+                }           
 
             }
             catch (Exception ex)
@@ -116,8 +116,12 @@ namespace manage_app
                     sqlDA.Fill(dt);
                     dg4.ItemsSource = dt.DefaultView;
                     txtPokazIDEnr.Text = "Wszystkie";
-
                 }
+                else
+                {
+                    MessageBox.Show("Wybierz numer symulacji");
+                }
+
             }
             catch (Exception ex)
             {

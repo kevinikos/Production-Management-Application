@@ -67,7 +67,7 @@
                 </ListView>
             </StackPanel>
             <TextBlock x:Name="Zegar" FontSize="20" Margin="3,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="#FF2280D0" FontWeight="Bold" Text=""/>
-            <materialDesign:TransitioningContent x:Name="TransitioningContentPanel" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.4}">
+            <materialDesign:TransitioningContent x:Name="TransitioningContentPanel" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.3}">
                 <Grid x:Name="Panel" Margin="0,100,0,0" Background="#FF2280D0" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Width="7"/>
             </materialDesign:TransitioningContent>
         </Grid>

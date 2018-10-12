@@ -1,5 +1,4 @@
-﻿using BespokeFusion;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -271,7 +270,7 @@ namespace manage_app
                 }
                 else
                 {
-                    MessageBox.Show("Uzupełnij brakujące pole");
+                    MessageBox.Show("Uzupełnij brakujące informacje");
                 }
 
             }
@@ -294,16 +293,62 @@ namespace manage_app
                 {
                     sqlCon.Open();
                 }
-                SqlDataAdapter sqlDA = new SqlDataAdapter("INSERT INTO t_Symulacja (id_sym, id_ez, ilosc, status) VALUES ('" + ComboBoxIDSym2.Text + "','" + txtIDEnr.Text + "','" + txtIloscLozek.Text + "','" + 0 + "')", sqlCon);
-                sqlDA.Fill(dt);
-                MessageBox.Show("Pomyślnie dodano symulację");
-                txtIloscLozek.Text = "";
-                ZnajdzSymulacje();
+
+                if ((ComboBoxIDSym2.SelectedItem != null) && (txtIDEnr.Text != "") && (txtIloscLozek.Text != ""))
+                {
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("INSERT INTO t_Symulacja (id_sym, id_ez, ilosc, status) VALUES ('" + ComboBoxIDSym2.Text + "','" + txtIDEnr.Text + "','" + txtIloscLozek.Text + "','" + 0 + "')", sqlCon);
+                    sqlDA.Fill(dt);
+                    MessageBox.Show("Pomyślnie dodano symulację");
+                    txtIloscLozek.Text = "";
+                    ZnajdzSymulacje();
+                }
+                else
+                {
+                    MessageBox.Show("Uzupełnij brakujące informacje");
+                }
 
             }
+            catch (Exception)
+            {
+                SqlDataAdapter sqlDA = new SqlDataAdapter("UPDATE t_Symulacja SET ilosc = ilosc +'" + txtIloscLozek.Text + "' WHERE id_ez='" + txtIDEnr.Text + "'", sqlCon);
+                sqlDA.Fill(dt);
+                MessageBox.Show("Wybrany model łóżka został już wcześniej dodany do symulacji nr " + ComboBoxIDSym2.Text + ", w związku z czym, zwiększono bieżącą ilość łóżek tej symulacji o " + txtIloscLozek.Text);
+                txtIloscLozek.Text = "";
+                ZnajdzSymulacje();
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+        }
+
+        private void btnUsunSymulacje_Click(object sender, RoutedEventArgs e)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (sqlCon.State == ConnectionState.Closed)
+                {
+                    sqlCon.Open();
+                }
+                if ((ComboBoxIDSym2.SelectedItem != null) && (txtIDEnr.Text != ""))
+                {
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("DELETE FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym2.Text + "') AND (id_ez='" + txtIDEnr.Text + "')", sqlCon);
+                    sqlDA.Fill(dt);
+                    dg2.ItemsSource = dt.DefaultView;
+                    MessageBox.Show("Pomyślnie usunięto model " + txtIDEnr.Text + " z symulacji nr " + ComboBoxIDSym2.Text);
+                    txtIDEnr.Text = "";
+                    ZnajdzSymulacje();
+                }
+                else
+                {
+                    MessageBox.Show("Uzupełnij brakujące informacje");
+                }
+            }
+
             catch (Exception ex)
             {
-                MessageBox.Show("Wybrany model łóżka jest już dodany");
+                MessageBox.Show(ex.Message);
             }
             finally
             {

@@ -4,11 +4,43 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:manage_app"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="730"
       Title="PageCzas">
 
     <Grid Background="White">
-        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="32">Czas</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="ID symulacji:" FontWeight="Bold" FontSize="14" FontFamily="Arial"/>
+                <ComboBox x:Name="ComboBoxIDSym" Width="35" Foreground="#FF2280D0" VerticalAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="14" SelectionChanged="ComboBoxIDSym_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                <Label Content="ID łóżka:" FontWeight="Bold" FontSize="14" FontFamily="Arial"/>
+                <ComboBox x:Name="ComboBoxIDEnr" Width="70" Foreground="#FF2280D0" VerticalAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="14"/>
+            </StackPanel>
+            <Button x:Name="btnOdswiezCzasy" Click="btnOdswiezCzasy_Click" Margin="30,0,0,0" Content="Odśwież czasy" Width="150" Background="#FF2280D0" BorderBrush="#FF673AB7" BorderThickness="1.5" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowRight" Height="20" Width="25" Opacity="0.6" FontWeight="Bold"/>
+            <TextBlock x:Name="txtPokazIDEnr" Text="Łóżko" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <StackPanel Margin="10">
+                <TextBlock Text="Czasy montażu końcowego" FontFamily="Arial" FontSize="13" Opacity="0.6" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <DataGrid Margin="0,10,0,0" x:Name="dg4" Grid.Row="1" Width="710" FontFamily="Arial"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Margin="10">
+                <TextBlock Text="Czasy produkcji BAUGRUP" FontFamily="Arial" FontSize="13" Opacity="0.6" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <DataGrid Margin="0,10,0,0" x:Name="dg5" Grid.Row="1" Width="710" FontFamily="Arial"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
