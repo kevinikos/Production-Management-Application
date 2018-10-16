@@ -33,7 +33,7 @@
                             </StackPanel>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                                 <Label Content="Użytkownik:" Width="130" HorizontalContentAlignment="Right" Opacity="0.9"/>
-                                <TextBox x:Name="txtUzytkownikG" Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Kevin Nikolas" HorizontalContentAlignment="Center" Foreground="Gray"/>
+                                <TextBox x:Name="txtUzytkownikG" Margin="5,0,0,0" Width="150" materialDesign:HintAssist.Hint="Jan Kowalski" HorizontalContentAlignment="Center" Foreground="Gray"/>
                             </StackPanel>
                             <Button Margin="0,20,0,0" HorizontalAlignment="Right" x:Name="btnDodajSymulacjeG" Click="btnDodajSymulacjeG_Click" Width="150" Content="Dodaj symulację" BorderThickness="1.5" Background="#FF2280D0" BorderBrush="#FF673AB7" />
                         </StackPanel>

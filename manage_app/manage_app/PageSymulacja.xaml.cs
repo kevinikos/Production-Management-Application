@@ -77,7 +77,8 @@ namespace manage_app
                 {
                     sqlCon.Open();
                 }
-                SqlDataAdapter sqlDA = new SqlDataAdapter("declare @max int; select @max = max(id_sym) from t_SymulacjaG; dbcc checkident(t_SymulacjaG ,reseed, @max); INSERT INTO t_SymulacjaG (opis, data_w, user_w) VALUES ('" + txtOpisSymulacjiG.Text + "','" + txtDataUtworzeniaG.Text + "','" + txtUzytkownikG.Text + "')", sqlCon);
+                DateTime datetime = Convert.ToDateTime(txtDataUtworzeniaG.Text);
+                SqlDataAdapter sqlDA = new SqlDataAdapter("declare @max int; select @max = max(id_sym) from t_SymulacjaG; dbcc checkident(t_SymulacjaG ,reseed, @max); INSERT INTO t_SymulacjaG (opis, data_w, user_w) VALUES ('" + txtOpisSymulacjiG.Text + "','" + datetime.ToString("yyyy-MM-dd HH:mm:ss.fff") + "','" + txtUzytkownikG.Text + "')", sqlCon);
                 sqlDA.Fill(dt);
                 MessageBox.Show("Pomyślnie dodano symulację");
                 txtOpisSymulacjiG.Text = "";

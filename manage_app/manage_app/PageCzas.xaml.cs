@@ -89,14 +89,62 @@ namespace manage_app
         private void btnOdswiezCzasy_Click(object sender, RoutedEventArgs e)
         {
             DataTable dt = new DataTable();
+            DataTable dtTB = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
                 {
                     sqlCon.Open();
                 }
-                MessageBox.Show("W trakcie..");
-            
+                if ((ComboBoxIDSym.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem != null))
+                {
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, t_MPK.opis, ROUND(Sum([Czas]*[t_Symulacja].[ilosc]*[t_Lozka].[ilosc]*[t_Komponenty].[ilosc])/60,2) AS [CzasProdukcjiBG(h)] " +
+                        "FROM t_Symulacja INNER JOIN ((t_Lozka INNER JOIN t_Komponenty ON t_Lozka.id_kp = t_Komponenty.id_kp) INNER JOIN (k_BG_CzasyMPK INNER JOIN t_MPK ON k_BG_CzasyMPK.mpk = t_MPK.mpk) ON t_Komponenty.id_b = k_BG_CzasyMPK.id_b) ON t_Symulacja.id_ez = t_Lozka.id_enr " +
+                        "GROUP BY t_Symulacja.id_sym, t_Symulacja.id_ez, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk, t_MPK.opis HAVING t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "' AND t_Symulacja.id_ez='" + ComboBoxIDEnr.Text + "'ORDER BY t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk;", sqlCon);
+                    sqlDA.Fill(dt);
+                    dg5.ItemsSource = dt.DefaultView;
+                    //laczny czas
+                    double suma = 0;
+                    for (int i = 0; i <= dt.Rows.Count - 1; i++)
+                    {
+                        suma += Convert.ToDouble(dt.Rows[i][3].ToString());
+                    }
+                    txtPokazCzasBG.Text = suma.ToString() + "h";
+                    //informacja dodatkowa - jaka ilosc zostala przypisana do danego modelu w symulacji
+                    SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT ilosc FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym.Text + "') AND (id_ez='" + ComboBoxIDEnr.Text + "')", sqlCon);
+                    sqlDATB.Fill(dtTB);
+                    txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
+                    txtPokazIDEnr.Text = ComboBoxIDEnr.Text;
+                    ComboBoxIDEnr.Text = "";
+
+                }
+
+                else if ((ComboBoxIDSym.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem == null))
+                {
+                    SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, t_MPK.opis, ROUND(Sum([Czas]*[t_Symulacja].[ilosc]*[t_Lozka].[ilosc]*[t_Komponenty].[ilosc])/60,2) AS [CzasProdukcjiBG(h)] " +
+                        "FROM t_Symulacja INNER JOIN ((t_Lozka INNER JOIN t_Komponenty ON t_Lozka.id_kp = t_Komponenty.id_kp) INNER JOIN (k_BG_CzasyMPK INNER JOIN t_MPK ON k_BG_CzasyMPK.mpk = t_MPK.mpk) ON t_Komponenty.id_b = k_BG_CzasyMPK.id_b) ON t_Symulacja.id_ez = t_Lozka.id_enr " +
+                        "GROUP BY t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk, t_MPK.opis HAVING t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "' ORDER BY t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk;", sqlCon);
+                    sqlDA.Fill(dt);
+                    dg5.ItemsSource = dt.DefaultView;
+                    //laczny czas
+                    double suma = 0;
+                    for (int i = 0; i <= dt.Rows.Count - 1; i++)
+                    {
+                        suma += Convert.ToDouble(dt.Rows[i][3].ToString());
+                    }
+                    txtPokazCzasBG.Text = suma.ToString() + "h";
+
+                    //informacja dodatkowa - jaka ilosc zostala przypisana do danego modelu w symulacji
+                    SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT SUM(ilosc) FROM t_Symulacja WHERE id_sym='" + ComboBoxIDSym.Text + "'", sqlCon);
+                    sqlDATB.Fill(dtTB);
+                    txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
+                    txtPokazIDEnr.Text = "Wszystkie";
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz numer symulacji");
+                }
+
             }
             catch (Exception ex)
             {

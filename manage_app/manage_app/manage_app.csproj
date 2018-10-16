@@ -158,8 +158,6 @@
   <ItemGroup>
     <Resource Include="Images\minimize.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
