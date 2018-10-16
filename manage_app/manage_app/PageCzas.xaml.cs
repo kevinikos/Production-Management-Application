@@ -90,6 +90,7 @@ namespace manage_app
         {
             DataTable dt = new DataTable();
             DataTable dtTB = new DataTable();
+            DataTable dtM = new DataTable();
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
@@ -103,20 +104,30 @@ namespace manage_app
                         "GROUP BY t_Symulacja.id_sym, t_Symulacja.id_ez, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk, t_MPK.opis HAVING t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "' AND t_Symulacja.id_ez='" + ComboBoxIDEnr.Text + "'ORDER BY t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk;", sqlCon);
                     sqlDA.Fill(dt);
                     dg5.ItemsSource = dt.DefaultView;
-                    //laczny czas
+                    //metoda 1- laczny czas dla 'czas produkcja'
                     double suma = 0;
                     for (int i = 0; i <= dt.Rows.Count - 1; i++)
                     {
                         suma += Convert.ToDouble(dt.Rows[i][3].ToString());
                     }
                     txtPokazCzasBG.Text = suma.ToString() + "h";
+
                     //informacja dodatkowa - jaka ilosc zostala przypisana do danego modelu w symulacji
                     SqlDataAdapter sqlDATB = new SqlDataAdapter("SELECT ilosc FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym.Text + "') AND (id_ez='" + ComboBoxIDEnr.Text + "')", sqlCon);
                     sqlDATB.Fill(dtTB);
                     txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
                     txtPokazIDEnr.Text = ComboBoxIDEnr.Text;
-                    ComboBoxIDEnr.Text = "";
 
+                    //metoda 2- laczny czas w zapytaniu dla 'czas montaz'
+                    SqlDataAdapter sqlDAM = new SqlDataAdapter("SELECT ROUND(SUM(sub.[CzasMontaz(h)]),3) AS [CzasMontaz(h)] " +
+                        "FROM (SELECT t_Symulacja.id_sym, k_LozkaSAP_SumaCzasMontaz.id_enr, (k_LozkaSAP_SumaCzasMontaz.czasEZ*t_Symulacja.ilosc)/60 AS [CzasMontaz(h)] " +
+                        "FROM t_Symulacja INNER JOIN k_LozkaSAP_SumaCzasMontaz ON t_Symulacja.id_ez = k_LozkaSAP_SumaCzasMontaz.id_enr WHERE t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "' AND t_Symulacja.id_ez='" + ComboBoxIDEnr.Text + "'" +
+                        "GROUP BY t_Symulacja.id_sym, k_LozkaSAP_SumaCzasMontaz.id_enr, k_LozkaSAP_SumaCzasMontaz.czasEZ, t_Symulacja.ilosc) sub", sqlCon);
+                    sqlDAM.Fill(dtM);
+                    txtPokazCzasM.Text = dtM.Rows[0][0].ToString() + "h";
+
+                    //czyszczenie dla wygody
+                    ComboBoxIDEnr.Text = "";
                 }
 
                 else if ((ComboBoxIDSym.SelectedItem != null) && (ComboBoxIDEnr.SelectedItem == null))
@@ -126,7 +137,7 @@ namespace manage_app
                         "GROUP BY t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk, t_MPK.opis HAVING t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "' ORDER BY t_Symulacja.id_sym, k_BG_CzasyMPK.obszar, k_BG_CzasyMPK.mpk;", sqlCon);
                     sqlDA.Fill(dt);
                     dg5.ItemsSource = dt.DefaultView;
-                    //laczny czas
+                    //metoda 1- laczny czas dla 'czas produkcja'
                     double suma = 0;
                     for (int i = 0; i <= dt.Rows.Count - 1; i++)
                     {
@@ -139,6 +150,14 @@ namespace manage_app
                     sqlDATB.Fill(dtTB);
                     txtPokazIlosc.Text = dtTB.Rows[0][0].ToString();
                     txtPokazIDEnr.Text = "Wszystkie";
+
+                    //metoda 2- laczny czas w zapytaniu dla 'czas montaz'
+                    SqlDataAdapter sqlDAM = new SqlDataAdapter("SELECT ROUND(SUM(sub.[CzasMontaz(h)]),3) AS [CzasMontaz(h)] " +
+                        "FROM (SELECT t_Symulacja.id_sym, k_LozkaSAP_SumaCzasMontaz.id_enr, (k_LozkaSAP_SumaCzasMontaz.czasEZ*t_Symulacja.ilosc)/60 AS [CzasMontaz(h)] " +
+                        "FROM t_Symulacja INNER JOIN k_LozkaSAP_SumaCzasMontaz ON t_Symulacja.id_ez = k_LozkaSAP_SumaCzasMontaz.id_enr WHERE t_Symulacja.id_sym='" + ComboBoxIDSym.Text + "'" +
+                        "GROUP BY t_Symulacja.id_sym, k_LozkaSAP_SumaCzasMontaz.id_enr, k_LozkaSAP_SumaCzasMontaz.czasEZ, t_Symulacja.ilosc) sub", sqlCon);
+                    sqlDAM.Fill(dtM);
+                    txtPokazCzasM.Text = dtM.Rows[0][0].ToString() + "h";
                 }
                 else
                 {

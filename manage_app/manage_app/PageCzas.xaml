@@ -12,9 +12,7 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="90"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -40,18 +38,19 @@
                 <TextBlock x:Name="txtPokazIlosc" Margin="5,0,0,0" Text="" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <TextBlock Text="Czasy montażu końcowego" FontFamily="Arial" FontSize="13" Opacity="0.6" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <TextBlock x:Name="txtPokazCzasM" Margin="7,0,0,0" Text="" FontFamily="Arial" FontSize="13" Opacity="1" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowRight" Height="20" Width="25" Opacity="0.6" FontWeight="Bold"/>
+                <TextBlock Text="Łączny czas montażu:" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Margin="5,0,0,0" x:Name="txtPokazCzasM" Text="" FontFamily="Arial" FontSize="13" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Margin="10,0,0,0" Kind="ArrowDown" Height="20" Width="25" Opacity="1" FontWeight="Bold"/>
+                <TextBlock Text="Łączny czas produkcji:" FontFamily="Arial" FontSize="13" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock x:Name="txtPokazCzasBG" Margin="5,0,0,0" Text="" FontFamily="Arial" FontSize="13" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+            </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2">
-            <DataGrid x:Name="dg4" Margin="10" HorizontalAlignment="Left" VerticalAlignment="top" Width="710" FontFamily="Arial"/>
-        </Grid>
-        <StackPanel Grid.Row="3" Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <TextBlock Text="Łączny czas produkcji BAUGRUP:" FontFamily="Arial" FontSize="13" Opacity="0.6" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <TextBlock x:Name="txtPokazCzasBG" Margin="7,0,0,0" Text="" FontFamily="Arial" FontSize="13" Opacity="1" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        </StackPanel>
-        <Grid Grid.Row="4">
             <DataGrid x:Name="dg5" Margin="10" HorizontalAlignment="Left" VerticalAlignment="top" Width="710" FontFamily="Arial"/>
         </Grid>
     </Grid>
