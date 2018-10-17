@@ -297,11 +297,22 @@ namespace manage_app
 
                 if ((ComboBoxIDSym2.SelectedItem != null) && (txtIDEnr.Text != "") && (txtIloscLozek.Text != ""))
                 {
-                    SqlDataAdapter sqlDA = new SqlDataAdapter("INSERT INTO t_Symulacja (id_sym, id_ez, ilosc, status) VALUES ('" + ComboBoxIDSym2.Text + "','" + txtIDEnr.Text + "','" + txtIloscLozek.Text + "','" + 0 + "')", sqlCon);
-                    sqlDA.Fill(dt);
-                    MessageBox.Show("Pomyślnie dodano symulację");
-                    txtIloscLozek.Text = "";
-                    ZnajdzSymulacje();
+                    //warunek sprawdzajacy czy lozko istnieje
+                    SqlCommand SzukajIDLozka = new SqlCommand("SELECT count(id_enr) FROM t_LozkaG WHERE id_enr='" + txtIDEnr.Text + "'", sqlCon);
+                    int CzyIstnieje = (int)SzukajIDLozka.ExecuteScalar();
+                    if (CzyIstnieje == 1) //kazda inna wartosc bedzie zla
+                    {
+                        SqlDataAdapter sqlDA = new SqlDataAdapter("INSERT INTO t_Symulacja (id_sym, id_ez, ilosc, status) VALUES ('" + ComboBoxIDSym2.Text + "','" + txtIDEnr.Text + "','" + txtIloscLozek.Text + "','" + 0 + "')", sqlCon);
+                        sqlDA.Fill(dt);
+                        MessageBox.Show("Pomyślnie dodano symulację");
+                        txtIloscLozek.Text = "";
+                        ZnajdzSymulacje();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Model '" + txtIDEnr.Text + "' nie istnieje");
+                        txtIloscLozek.Text = "";
+                    }
                 }
                 else
                 {
@@ -334,12 +345,23 @@ namespace manage_app
                 }
                 if ((ComboBoxIDSym2.SelectedItem != null) && (txtIDEnr.Text != ""))
                 {
-                    SqlDataAdapter sqlDA = new SqlDataAdapter("DELETE FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym2.Text + "') AND (id_ez='" + txtIDEnr.Text + "')", sqlCon);
-                    sqlDA.Fill(dt);
-                    dg2.ItemsSource = dt.DefaultView;
-                    MessageBox.Show("Pomyślnie usunięto model " + txtIDEnr.Text + " z symulacji nr " + ComboBoxIDSym2.Text);
-                    txtIDEnr.Text = "";
-                    ZnajdzSymulacje();
+                    //warunek sprawdzajacy czy lozko jest w wybranej symulacji
+                    SqlCommand SzukajIDLozka = new SqlCommand("SELECT count(id_ez) FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym2.Text + "') AND (id_ez='" + txtIDEnr.Text + "')", sqlCon);
+                    int CzyIstnieje = (int)SzukajIDLozka.ExecuteScalar();
+                    if (CzyIstnieje == 1) //kazda inna wartosc bedzie zla
+                    {
+                        SqlDataAdapter sqlDA = new SqlDataAdapter("DELETE FROM t_Symulacja WHERE (id_sym='" + ComboBoxIDSym2.Text + "') AND (id_ez='" + txtIDEnr.Text + "')", sqlCon);
+                        sqlDA.Fill(dt);
+                        dg2.ItemsSource = dt.DefaultView;
+                        MessageBox.Show("Pomyślnie usunięto model '" + txtIDEnr.Text + "' z symulacji nr " + ComboBoxIDSym2.Text);
+                        txtIDEnr.Text = "";
+                        ZnajdzSymulacje();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie można usunąć modelu '" + txtIDEnr.Text + "', ponieważ nie istnieje w wybranej symulacji");
+                        txtIloscLozek.Text = "";
+                    }
                 }
                 else
                 {
