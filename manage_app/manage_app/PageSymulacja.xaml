@@ -77,7 +77,7 @@
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition MaxHeight="420" MinHeight="80" Height="300"/>
+                            <RowDefinition MaxHeight="440" MinHeight="80" Height="300"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <GridSplitter Grid.Row="1" Background="#FF2280D0" Height="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Opacity="0.8"/>
