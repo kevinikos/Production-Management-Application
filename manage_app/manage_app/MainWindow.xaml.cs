@@ -29,7 +29,7 @@ namespace manage_app
 
         private void btnZaloguj_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=logowanie; User ID=sa; Password=whatever2424");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             try
             {
                 if (sqlCon.State == System.Data.ConnectionState.Closed)

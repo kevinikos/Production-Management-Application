@@ -37,7 +37,7 @@ namespace manage_app
 
         private void btnZmienHaslo_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=logowanie; User ID=sa; Password=whatever2424");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=LAPTOP-OIOAR14S\MYSQL2017; Initial Catalog=BazaTest; User ID=sa; Password=whatever2424");
             try
             {
                 SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT COUNT(*) FROM Uzytkownik WHERE Login='" + txtLogin.Text + "' AND Haslo='" + txtStareHaslo.Password + "'", sqlCon);
@@ -59,7 +59,7 @@ namespace manage_app
                         }
                         else
                         {
-                            MessageBox.Show("Hasło musi zawierać conajmniej 5 znaków");
+                            MessageBox.Show("Hasło musi zawierać co najmniej 5 znaków");
                         }
                     }
                     else
